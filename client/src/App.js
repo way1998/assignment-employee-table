@@ -1,35 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
-import React from "react";
+import React, { Component } from "react";
+import Welcome from './components/welcome';
+import Employees from './components/employees';
 
-function App() {
-  const [data, setData] = React.useState(null);
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn: false,
+    };
 
-  React.useEffect(() => {
-    fetch("/users")
-      .then((res) => res.text())
-      .then((res) => setData(res));
-  }, []);
+    // event handlers
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  handleLogin() {
+    this.setState({isLoggedIn: true});
+  }
+
+  handleLogout() {
+    this.setState({isLoggedIn: false});
+  }
+
+  render() {
+    return (
+      <div>
+        {
+          this.state.isLoggedIn ? (
+            <Employees handleLogout={this.handleLogout}/>
+          ) : (
+            <Welcome handleLogin={this.handleLogin}/>
+          )
+        }
+      </div>
+    );
+  }
 }
 
 export default App;
