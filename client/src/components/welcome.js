@@ -1,10 +1,8 @@
 import logo from '../logo.svg';
 import './welcome.css';
 import React, { Component } from "react";
-// import Button from 'react-bootstrap/Button';
 import { Button } from 'antd'; 
 import { LoginOutlined } from '@ant-design/icons';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Welcome extends Component {
   constructor(props) {
