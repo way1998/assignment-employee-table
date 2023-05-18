@@ -34,7 +34,7 @@ npm 9.5.1
 
     `./start.sh`
 
-2. Open browser, go to "http://localhost:3000" and enjoy the app!
+2. (Wait 30 secs) Open browser, go to "http://localhost:3000" and enjoy the app!
 
 
 ## API reference
