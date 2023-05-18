@@ -1,3 +1,4 @@
+// helper functions to format database response
 function rowsOrEmptyList(rows) {
     if (!rows) {
         return [];

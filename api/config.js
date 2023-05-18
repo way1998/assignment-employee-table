@@ -1,5 +1,5 @@
 const config = {
-    /* database config */
+    // database config
     db: {
         host: "127.0.0.1",
         user: "aet_admin",
