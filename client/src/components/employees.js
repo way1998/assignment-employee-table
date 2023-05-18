@@ -228,6 +228,11 @@ class Employees extends Component {
                   preserve={false}
                   layout="vertical" 
                   name="addEmployee" 
+                  initialValues={{
+                    firstName: "",
+                    lastName: "",
+                    salary: 0,
+                  }}
                   onFieldsChange={(_, allFields)=>{
                     this.setState({form: {
                       firstName: allFields[0].value,
