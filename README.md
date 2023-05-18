@@ -17,16 +17,19 @@ npm 9.5.1
 2. Install dependencies for React client:
 
     `cd client`
+
     `npm install --legacy-peer-deps`
 
 3. Install dependencies for Express api:
 
     `cd ../api`
+
     `npm install`
 
 4. Run init_db.sql to initialize database with data provided (Please use a user with privilege to create database and user):
 
     `cd ..`
+    
     `mysql -u <username> -p < init_db.sql`
 
 ## Run
