@@ -61,3 +61,5 @@ table: employee
 | auto increment| not null  | not null  | not null  |
 | primary key |   |   |   |
 | 1  | Lewis  | Burson  | 40700  |
+
+Note that ID is designed to be unique and auto-incremented, thus it cannot be specified when adding an employee or changed when editing an employee.
