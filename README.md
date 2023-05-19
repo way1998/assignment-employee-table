@@ -16,7 +16,7 @@ npm 9.5.1
 
 2. Install dependencies for React client:
 
-    `cd client`
+    `cd assignment-employee-table/client`
 
     `npm install --legacy-peer-deps`
 
@@ -29,7 +29,7 @@ npm 9.5.1
 4. Run init_db.sql to initialize database with data provided (Please use a user with privilege to create database and user):
 
     `cd ..`
-    
+
     `mysql -u <username> -p < init_db.sql`
 
 ## Run
