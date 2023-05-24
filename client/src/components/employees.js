@@ -27,7 +27,7 @@ class Employees extends Component {
           key: "first_name",
           title: "First Name",
           defaultSortOrder: 'ascend',
-          sorter: (a, b) => a.id - b.id,
+          sorter: (a, b) => a.first_name - b.first_name,
           render: (text) => <Button type="link">{text}</Button>,
         },
         {
@@ -35,7 +35,7 @@ class Employees extends Component {
           key: "last_name",
           title: "Last Name",
           defaultSortOrder: 'ascend',
-          sorter: (a, b) => a.id - b.id,
+          sorter: (a, b) => a.last_name - b.last_name,
           render: (text) => <Button type="link">{text}</Button>,
         },
         {
@@ -43,7 +43,14 @@ class Employees extends Component {
           key: "salary",
           title: "Salary",
           defaultSortOrder: 'ascend',
-          sorter: (a, b) => a.id - b.id,
+          sorter: (a, b) => a.salary - b.salary,
+        },
+        {
+          dataIndex: "job_title",
+          key: "job_title",
+          title: "Job Title",
+          defaultSortOrder: 'ascend',
+          sorter: (a, b) => a.job_title - b.job_title,
         },
         {
           key: "action",
@@ -70,7 +77,8 @@ class Employees extends Component {
       form: {
         firstName: "",
         lastName: "",
-        salary: 0
+        salary: 0,
+        jobTitle: ""
       },
       idBeingEdited: 0
     };
@@ -120,7 +128,8 @@ class Employees extends Component {
               form: {
                 firstName: "",
                 lastName: "",
-                salary: 0
+                salary: 0,
+                jobTitle: "",
               }});
           });
     }
@@ -132,7 +141,8 @@ class Employees extends Component {
       form: {
         firstName: "",
         lastName: "",
-        salary: 0
+        salary: 0,
+        jobTitle: ""
     }});
   }
 
@@ -153,7 +163,8 @@ class Employees extends Component {
       form: {
         firstName: record.first_name,
         lastName: record.last_name,
-        salary: record.salary
+        salary: record.salary,
+        jobTitle: record.job_title
       },
       idBeingEdited: record.id
     }, ()=>{
@@ -166,10 +177,6 @@ class Employees extends Component {
 
   handleEditConfirm() {
     // validate inputs
-    console.log(this.state.form.firstName.length !== 0);
-    console.log(this.state.form.lastName.length !== 0);
-    console.log(!isNaN(+this.state.form.salary));
-
     if (this.state.form.firstName.length !== 0 &&
       this.state.form.lastName.length !== 0 &&
       !isNaN(+this.state.form.salary)) {
@@ -185,7 +192,8 @@ class Employees extends Component {
             form: {
               firstName: "",
               lastName: "",
-              salary: 0
+              salary: 0,
+              jobTitle: ""
             }});
         });
     }    
@@ -197,7 +205,8 @@ class Employees extends Component {
       form: {
         firstName: "",
         lastName: "",
-        salary: 0
+        salary: 0,
+        jobTitle: ""
     }});
   }
 
@@ -232,12 +241,14 @@ class Employees extends Component {
                     firstName: "",
                     lastName: "",
                     salary: 0,
+                    jobTitle: ""
                   }}
                   onFieldsChange={(_, allFields)=>{
                     this.setState({form: {
                       firstName: allFields[0].value,
                       lastName: allFields[1].value,
-                      salary: allFields[2].value
+                      salary: allFields[2].value,
+                      jobTitle: allFields[3].value
                     }});
                   }}>
                   <Form.Item name="firstName" label="First Name" rules={[{
@@ -261,6 +272,9 @@ class Employees extends Component {
                   ]}>
                     <InputNumber />
                   </Form.Item>
+                  <Form.Item name="jobTitle" label="Job Title">
+                    <Input />
+                  </Form.Item>
                 </Form>
             </Modal>
 
@@ -281,12 +295,14 @@ class Employees extends Component {
                     firstName: this.state.form.firstName,
                     lastName: this.state.form.lastName,
                     salary: this.state.form.salary,
+                    jobTitle: this.state.form.jobTitle
                   }}
                   onFieldsChange={(_, allFields)=>{
                     this.setState({form: {
                       firstName: allFields[1].value,
                       lastName: allFields[2].value,
-                      salary: allFields[3].value
+                      salary: allFields[3].value,
+                      jobTitle: allFields[4].value
                     }});
                   }}>
                   <Form.Item name="id" label="ID">
@@ -312,6 +328,9 @@ class Employees extends Component {
                   },
                   ]}>
                     <InputNumber placeholder={this.state.form.salary}/>
+                  </Form.Item>
+                  <Form.Item name="jobTitle" label="Job Title">
+                    <Input />
                   </Form.Item>
                 </Form>
             </Modal>

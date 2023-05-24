@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `assignment_employee_table`.`employee` (
     `first_name` VARCHAR(255) NOT NULL,
     `last_name` VARCHAR(255) NOT NULL,
     `salary` INT NOT NULL,
+    `job_title` VARCHAR(255),
     PRIMARY KEY (`id`)
 )
 ENGINE = InnoDB;

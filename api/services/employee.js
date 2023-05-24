@@ -2,7 +2,7 @@ const db = require('./db');
 const helper = require('../helper');
 
 async function getEmployees() {
-    const sql = `SELECT id, first_name, last_name, salary FROM employee`;
+    const sql = `SELECT id, first_name, last_name, salary, job_title FROM employee`;
     const rows = await db.query(sql);
     const employees = helper.rowsOrEmptyList(rows);
     return {
@@ -11,8 +11,8 @@ async function getEmployees() {
 }
 
 async function addEmployee(employee) {
-    const sql = `INSERT INTO employee (first_name, last_name, salary) VALUES (?, ?, ?)`;
-    const res = await db.query(sql, [employee.firstName, employee.lastName, employee.salary]);
+    const sql = `INSERT INTO employee (first_name, last_name, salary, job_title) VALUES (?, ?, ?, ?)`;
+    const res = await db.query(sql, [employee.firstName, employee.lastName, employee.salary, employee.jobTitle]);
     const msg = helper.msgUpdatedOrError(res.affectedRows);
     return {
         msg
@@ -29,8 +29,8 @@ async function deleteEmployee(id) {
 }
 
 async function editEmployee(id, employee) {
-    const sql = `UPDATE employee SET first_name=?, last_name=?, salary=? WHERE id=?`;
-    const res = await db.query(sql, [employee.firstName, employee.lastName, employee.salary, id]);
+    const sql = `UPDATE employee SET first_name=?, last_name=?, salary=?, job_title=? WHERE id=?`;
+    const res = await db.query(sql, [employee.firstName, employee.lastName, employee.salary, employee.jobTitle, id]);
     const msg = helper.msgUpdatedOrError(res.affectedRows);
     return {
         msg
